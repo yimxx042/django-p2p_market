@@ -10,7 +10,13 @@
 <h2>Welcome to Podo Market!</h2>
 
 {% if user.is_authenticated %}
-  <p>Welcome {{ user }}, Your email is {{ user.email }}.</p>
+  <p>Welcome {{ user }}!.</p>
+  <p>This is your information:</p>
+  <ul>
+    <li>Nickname - {{ user.nickname }}</li>
+    <li>Kakao ID - {{ user.kakao_id }}</li>
+    <li>Address - {{ user.address }}</li>
+  </ul>
 {% else %}
     <p>Log Out Status.</p>
 {% endif %}
