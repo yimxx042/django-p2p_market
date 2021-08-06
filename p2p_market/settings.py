@@ -131,6 +131,9 @@ STATIC_URL = '/static/'
 # Auth settings
 
 AUTH_USER_MODEL = 'podomarket.User'
+ACCOUNT_SIGNUP_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'index'
+ACCOUNT_LOGOUT_ON_GET = True
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
