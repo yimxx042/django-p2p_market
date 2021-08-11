@@ -1,0 +1,47 @@
+{% extends "podomarket_base/base.html" %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Login | PodoMarket{% endblock title %}
+
+{% block body_class %}with-border with-background{% endblock %}
+
+{% block content %}
+<div class="login">
+  <form method="post">
+    <a href="{% url 'index' %}">
+      <img class="logo" src="{% static 'podomarket/assets/logo.svg' %}" alt="포도마켓">
+    </a>
+  {% csrf_token %}
+  <div class="email">
+    {{ form.login|add_class:"podo-input"|attr:"placeholder:Email"|add_error_class:"error" }}
+    {% for error in form.login.errors %}
+    <div class="error-message">{{ error }}</div>
+    {% endfor %}
+  </div>
+  <div>
+    {{ form.password|add_class:"podo-input"|attr:"placeholder:Password"|add_error_class:"error" }}
+    {% for error in form.password.errors %}
+    <div class="error-message">{{ error }}</div>
+    {% endfor %}
+  </div>
+  <div class="non-field-errors">
+    {% for error in form.non_field_errors %}
+      <div class="error-message">{{ error }}</div>
+    {% endfor %}
+  </div>
+  <button class="podo-button large primary submit" type="submit">Login</button>
+</form>
+
+  <ul class="podo-links links">
+  <li>
+    <a href="{% url 'account_reset_password' %}">Reset Password</a>
+  </li>
+  <li class="divider"></li>
+  <li>
+    <a href="{% url 'account_signup' %}">Sign up</a>
+  </li>
+</ul>
+</div>
+{% endblock content %}
